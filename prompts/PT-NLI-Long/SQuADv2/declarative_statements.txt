@@ -1,0 +1,76 @@
+Your job is to transform each question and answer pair into a declarative statement. Additionally you must provide 5 (five) paraphrases for each declarative statement. You must return a JSON object containing each question with the following structure:
+{
+    "statements": [
+        {
+            "declarative_statement": "<The declarative statement derived from the question and answer>",
+            "paraphrase_1": "<A paraphrase of the declarative statement>",
+            "paraphrase_2": "<Another paraphrase of the declarative statement>",
+            "paraphrase_3": "<Yet another paraphrase of the declarative statement>",
+            "paraphrase_4": "<A different paraphrase of the declarative statement>",
+            "paraphrase_5": "<A final paraphrase of the declarative statement>"
+        }
+    ]
+}
+
+Here are some examples of how to transform questions into declarative statements:
+
+"input": [
+    {
+    "question": "Does anyone ever miss a tournament? ",
+    "answer": "It is very rare for top clubs to miss the competition",
+    },
+    {
+    "question": "Can new clubs play too?",
+    "answer": "Newly formed clubs, such as F.C. United of Manchester in 2005–06 and also 2006–07, may not therefore play in the FA Cup in their first season.",
+    },
+    {
+    "question": "Do I need a stadium to compete?",
+    "answer": "All clubs entering the competition must also have a suitable stadium.",
+    },
+    {
+    "question": "How can natural predators benefit crops?",
+    "answer": "reducing damage to crops, and are one alternative to the use of chemical agents such as pesticides",
+    }
+    ]
+
+Output:
+{
+    "statements": [
+        {
+            "declarative_statement": "It is very rare for top clubs to miss the tourment",
+            "paraphrase_1": "Top clubs almost never miss the competition",
+            "paraphrase_2": "Missing the competition is very uncommon for top clubs",
+            "paraphrase_3": "Top teams seldom fail to participate in the competition",
+            "paraphrase_4": "It is unusual for leading clubs to not take part in the tournament",
+            "paraphrase_5": "Leading clubs are nearly always present in the competition"
+        },
+        {
+            "declarative_statement": "Clubs may not play in the FA Cup in their first season",
+            "paraphrase_1": "New clubs might not compete in the FA Cup during their inaugural season",
+            "paraphrase_2": "Clubs might be ineligible to compete in the FA Cup during their first season",
+            "paraphrase_3": "In their first season, clubs may not be able to play in the FA Cup",
+            "paraphrase_4": "It is possible that new clubs cannot participate in the FA Cup in their debut season",
+            "paraphrase_5": "The FA Cup may not include clubs in their inaugural season"
+
+        },
+        {
+            "declarative_statement": "All clubs need a stadium to compete",
+            "paraphrase_1": "Clubs must have a stadium to be eligible to compete",
+            "paraphrase_2": "Every club must have a stadium to enter the competition",
+            "paraphrase_3": "No club can compete without a stadium",
+            "paraphrase_4": "Having a stadium is a prerequisite for clubs to compete",
+            "paraphrase_5": "Competing requires every club to possess a stadium"
+        },
+        {
+            "declarative_statement": "Natural predators can benefit crops by reducing damage to crops",
+            "paraphrase_1": "Crops can be protected from damage by natural predators",
+            "paraphrase_2": "Natural predators help protect crops by minimizing crop damage",
+            "paraphrase_3": "Using natural predators can lessen the harm to crops",
+            "paraphrase_4": "Natural predators aid in crop protection by cutting down on damage",
+            "paraphrase_5": "Using natural predators can be advantageous for crops by controlling crop damage"
+        }
+    ]
+}    
+
+End of Examples. Now its the real input:
+"""

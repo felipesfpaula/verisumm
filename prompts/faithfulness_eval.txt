@@ -1,0 +1,67 @@
+Você é um verificador especialista em factualidade de resumos. Sua tarefa é identificar erros factuais em resumos gerados por máquina, seguindo a tipologia de erros apresentada abaixo. Sempre que houver um trecho entre asteriscos (*) no exemplo, esse trecho indica a parte factualmente incorreta.
+
+**TEXTO-FONTE:**  
+A primeira vacina contra Ebola foi aprovada pela FDA em 2019 nos EUA, cinco anos após o surto inicial em 2014.  
+Para produzir a vacina, os cientistas tiveram que sequenciar o DNA do Ebola, depois identificar possíveis vacinas e, finalmente, comprovar testes clínicos bem-sucedidos.  
+Cientistas dizem que uma vacina para COVID-19 dificilmente estará pronta este ano, embora os testes clínicos já tenham começado.
+
+**TIPOLOGIA DE ERROS:**  
+1. **Erro de Relação**  
+   - **code:** PredE  
+   - **description:** O predicado na afirmação do resumo está inconsistente com o artigo-fonte.  
+   - **example:** A vacina contra Ebola *foi rejeitada* pela FDA em 2019.
+
+2. **Erro de Entidade**  
+   - **code:** EntE  
+   - **description:** Os argumentos principais (ou seus atributos) do predicado estão incorretos.  
+   - **example:** A *vacina contra COVID-19* foi aprovada pela FDA em 2019.
+
+3. **Erro de Circunstância**  
+   - **code:** CircE  
+   - **description:** A informação adicional (como lugar ou data) que especifica a circunstância ao redor de um predicado está errada.  
+   - **example:** A primeira vacina contra Ebola foi aprovada pela FDA em *2014*.
+
+4. **Erro de Anáfora/Coreferência**  
+   - **code:** CorefE  
+   - **description:** Uso de pronome ou referência com antecedente incorreto ou inexistente.  
+   - **example:** A primeira vacina contra Ebola foi aprovada em 2019. *Eles* dizem que uma vacina para COVID-19 dificilmente ficará pronta este ano.
+
+5. **Erro de Conexão de Discurso**  
+   - **code:** LinkE  
+   - **description:** Erro na forma como múltiplas afirmações são ligadas no discurso (por exemplo, ordem temporal ou relação de causa).  
+   - **example:** Para produzir a vacina, os cientistas têm que mostrar testes clínicos bem-sucedidos, *depois* sequenciar o DNA do vírus.
+
+6. **Erro Fora do Artigo**  
+   - **code:** OutE  
+   - **description:** A afirmação contém informação que não está presente no artigo-fonte.  
+   - **example:** *A China* já começou testes clínicos da vacina para COVID-19.
+
+7. **Erro Gramatical**  
+   - **code:** GramE  
+   - **description:** A gramática da frase está tão errada que ela se torna sem sentido.  
+   - **example:** A vacina contra Ebola *aceitou já ter começado*.
+
+**SUA TAREFA:**  
+Anote cada erro identificado no resumo, especificando:  
+- **code** (do erro, conforme a tipologia: PredE, EntE, CircE, CorefE, LinkE, OutE ou GramE);  
+- **explanation** (explicação do porquê aquilo é um erro);  
+- **annotated_sentence** (a sentença do resumo anotada com asteriscos indicando a parte incorreta).
+
+Retorne um JSON com a seguinte estrutura abaixo (mantendo os nomes de campo em inglês):
+
+{{
+  "errors": [
+    {{
+      "code": "<error code from the typology>",
+      "explanation": "<explicação do porquê isto é um erro>",
+      "annotated_sentence": "<sentença anotada com asteriscos, como nos exemplos acima>"
+    }}
+    // ... mais itens de erro, se houver
+  ]
+}}
+
+Atenção! Caso não haja erros retornar o objeto “errors” vazio.
+
+TEXTO-FONTE: {}
+SUMÁRIO: {}
+"""

@@ -1,0 +1,25 @@
+Your task is to translate a Natural Language Inference dataset into Brazilian Portuguese.
+You will translate a single dataset example. This example follows a strict JSON format that you must adhere to.
+Examples should be translated consistently; for example, if you don't translate an entity name in one part, you should not translate it in another.
+Pay attention to not_entailment cases, where the hypothesis does not follow from the premise. Language in these cases may be incoherent. You should not try to fix these cases, just translate them as they are. 
+The entailment cases are accompanied by paraphrases, which you should also translate.
+You should answer in a JSON format with the following structure:
+{
+    "id": "<unique identifier for the example>",
+    "context": "< Brazilian Portuguese translation of the premise>",
+    "statements": [
+        {
+            "statement": "<  Portuguese translation of the hypothesis>",
+            "label": "<entailment or not_entailment labels... you should not translate those>",
+            "paraphrases": [
+                "< Brazilian Portuguese translation of the first paraphrase>",
+                "< Brazilian Portuguese translation of the second paraphrase>",
+                "< Brazilian Portuguese translation of the third paraphrase>",
+                "< Brazilian Portuguese translation of the fourth paraphrase>",
+                "< Brazilian Portuguese translation of the fifth paraphrase>"
+            ]
+        }
+    ]
+}
+
+Input:

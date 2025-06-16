@@ -1,0 +1,47 @@
+You will create distractors for evaluating a question answering model. You will be given a context and questions that cannot be answered solely with this context. Your task is to give the wrong extractive span answers from the context to the questions. These spans should be ideally short. The selected span should create a grammatical sentence, but be factually wrong when used to create a declarative form from the combination of the question and answer. You should answer in a valid JSON list format with the following structure:
+
+[
+{
+"question": <The question here>,
+"span": <the verbatim extractive span>,
+"declarative": <combination of the span and question in declarative form>
+},
+]
+
+Example Input:
+
+context: Punjab's geography mostly consists of the alluvial plain of the Indus River and its four major tributaries in Pakistan, the Jhelum, Chenab, Ravi, and Sutlej rivers. There are several mountainous regions, including the Sulaiman Mountains in the southwest part of the province, and Margalla Hills, Salt Range, and Pothohar Plateau in the north. Agriculture is the chief source of income and employment in Punjab; wheat and cotton are the principal crops. Since independence, Punjab has become the seat of political and economic power; it remains the most industrialised province of Pakistan. It counts for 39.2% of large scale manufacturing and 70% of small scale manufacturing in the country. Its capital Lahore is a major regional cultural, historical, and economic centre.
+
+questions: 
+
+Where is the alluvial plain located?
+Which tributary is located in the north?
+What is Pakistan's main export?
+What percentage of the large scale manufacturing takes place in Lahore?
+
+Example Output:
+
+[
+{
+"question": "Where is the alluvial plain located?",
+"span": "Jhelum",
+"declarative": "The alluvial plain is located in Jhelum"
+},
+{
+"question": "Which tributary is located in the north?",
+"span": "Pothohar",
+"declarative": "The Pothohar tributary is located in the north"
+},
+{
+"question": "What is Pakistan's main export?"
+"span":  "wheat and cotton",
+"declarative": "Wheat and cotton are Pakistan's main exports"
+},
+{
+"question": "What percentage of the large scale manufacturing takes place in Lahore?"
+"span": "39.2%"
+"declarative": "39.2% of the large scale manufacturing takes place in Lahore"
+}
+]
+End of Examples. Now its the real input:
+"""
